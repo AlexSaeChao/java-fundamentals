@@ -1,9 +1,9 @@
 package basics;
 
+import java.util.Random;
+
 public class Main {
     public static void main(String[] args) {
-        String greeting = "Welcome to my Java lab program.";
-        System.out.println(greeting);
 
         int dogCount = 1;
         System.out.println("I own " + dogCount + " " + pluralize("dog", dogCount) + ".");
@@ -13,6 +13,10 @@ public class Main {
 
         int turtleCount = 0;
         System.out.println("I own " + turtleCount + " " + pluralize("turtle", turtleCount) + ".");
+
+        flipNHeads(1);
+        flipNHeads(2);
+        flipNHeads(3);
     }
 
     public static String pluralize(String word, int number) {
@@ -21,5 +25,26 @@ public class Main {
         } else {
             return word;
         }
+    }
+
+    public static void flipNHeads(int n) {
+        Random random = new Random();
+        int flips = 0;
+        int headsInARow = 0;
+
+        while (headsInARow < n) {
+            flips++;
+            float coinFlip = random.nextFloat();
+
+            if (coinFlip > 0.5) {
+                System.out.println("heads");
+                headsInARow++;
+            } else {
+                System.out.println("tails");
+                headsInARow = 0;
+            }
+
+        }
+        System.out.println("It took " + flips + " flips to flip " + headsInARow + " head(s) in a row.");
     }
 }
