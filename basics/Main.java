@@ -1,6 +1,8 @@
 package basics;
 
 import java.util.Random;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,6 +19,8 @@ public class Main {
         flipNHeads(1);
         flipNHeads(2);
         flipNHeads(3);
+
+        clock();
     }
 
     public static String pluralize(String word, int number) {
@@ -47,4 +51,18 @@ public class Main {
         }
         System.out.println("It took " + flips + " flips to flip " + headsInARow + " head(s) in a row.");
     }
+
+    public static void clock() {
+        LocalDateTime oldTime = null;
+
+        while (true) {
+            LocalDateTime nowTime = LocalDateTime.now();
+            if (oldTime == null || nowTime.getSecond() != oldTime.getSecond()) {
+                String formattedTime = nowTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+                System.out.println(formattedTime);
+            }
+            oldTime = nowTime;
+        }
+    }
+
 }
