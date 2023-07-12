@@ -6,6 +6,9 @@
 * pluralize(String word, int number)
 * flipNHeads(int n)
 * clock()
+* diceRoll
+* containsDuplicates
+* calculatingAverages
 
 ## Resources
 
