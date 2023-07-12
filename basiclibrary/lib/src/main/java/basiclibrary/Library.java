@@ -4,13 +4,11 @@
 package basiclibrary;
 
 import java.util.Random;
-
+import java.util.Arrays;
 public class Library {
+
     public static int numOfSides = 6;
     private static Random random = new Random();
-    public boolean returnRolls() {
-        return true;
-    }
 
     public static int[] roll(int n) {
         int[] rolls = new int[n];
@@ -20,4 +18,27 @@ public class Library {
         }
         return rolls;
     }
+
+    public static boolean containsDuplicates(int[] array) {
+        Arrays.sort(array);
+
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i] == array[i + 1]) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static double calculateAverage(int[] array) {
+
+        int sum = 0;
+        for (int num : array) {
+            sum += num;
+        }
+
+        return (double) sum / array.length;
+    }
+
 }

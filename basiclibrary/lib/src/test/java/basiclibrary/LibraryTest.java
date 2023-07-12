@@ -21,4 +21,45 @@ class LibraryTest {
             assertTrue(roll >= 1 && roll <= Library.numOfSides, "Invalid roll value");
         }
     }
+    @Test
+    void containsDuplicates_ReturnsFalse_test() {
+        // Arrange
+        int[] array = {1, 2, 3, 4, 5};
+
+        // Act
+        boolean result = Library.containsDuplicates(array);
+
+        // Assert
+        assertFalse(result, "Expected no duplicates");
+    }
+
+    @Test
+    void containsDuplicates_ReturnsTrue_test() {
+        // Arrange
+        int[] array = {1, 2, 3, 4, 3, 5};
+
+        // Act
+        boolean result = Library.containsDuplicates(array);
+
+        // Assert
+        assertTrue(result, "Expected duplicates to exist");
+    }
+
+    @Test
+    void calculateAverage_ReturnsCorrectAverage_test() {
+        // Arrange
+        int[] array1 = {6, 2, 3, 4, 5};
+        int[] array2 = {30, 50, 40, 20, 10};
+        int[] array3 = {0, 1, -1};
+
+        // Act
+        double result1 = Library.calculateAverage(array1);
+        double result2 = Library.calculateAverage(array2);
+        double result3 = Library.calculateAverage(array3);
+
+        // Assert
+        assertEquals(4.0, result1, "Expected average to be 3.0");
+        assertEquals(30.0, result2, "Expected average to be 30.0");
+        assertEquals(0.0, result3, "Expected average to be 0.0");
+    }
 }
