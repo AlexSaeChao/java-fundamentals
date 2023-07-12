@@ -3,8 +3,21 @@
  */
 package basiclibrary;
 
+import java.util.Random;
+
 public class Library {
-    public boolean someLibraryMethod() {
+    public static int numOfSides = 6;
+    private static Random random = new Random();
+    public boolean returnRolls() {
         return true;
+    }
+
+    public static int[] roll(int n) {
+        int[] rolls = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            rolls[i] = random.nextInt(numOfSides) + 1;
+        }
+        return rolls;
     }
 }
