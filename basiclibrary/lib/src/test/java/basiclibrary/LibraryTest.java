@@ -8,8 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class LibraryTest {
     @Test void returnRollsTest() {
         // Arrange
-        int n = 5;
         Library sut = new Library();
+        int n = 5;
 
         // Act
         int[] result = sut.roll(n);
@@ -24,10 +24,11 @@ class LibraryTest {
     @Test
     void containsDuplicates_ReturnsFalse_test() {
         // Arrange
+        Library sut = new Library();
         int[] array = {1, 2, 3, 4, 5};
 
         // Act
-        boolean result = Library.containsDuplicates(array);
+        boolean result = sut.containsDuplicates(array);
 
         // Assert
         assertFalse(result, "Expected no duplicates");
@@ -36,10 +37,11 @@ class LibraryTest {
     @Test
     void containsDuplicates_ReturnsTrue_test() {
         // Arrange
+        Library sut = new Library();
         int[] array = {1, 2, 3, 4, 3, 5};
 
         // Act
-        boolean result = Library.containsDuplicates(array);
+        boolean result = sut.containsDuplicates(array);
 
         // Assert
         assertTrue(result, "Expected duplicates to exist");
@@ -48,18 +50,36 @@ class LibraryTest {
     @Test
     void calculateAverage_ReturnsCorrectAverage_test() {
         // Arrange
+        Library sut = new Library();
         int[] array1 = {6, 2, 3, 4, 5};
         int[] array2 = {30, 50, 40, 20, 10};
         int[] array3 = {0, 1, -1};
 
         // Act
-        double result1 = Library.calculateAverage(array1);
-        double result2 = Library.calculateAverage(array2);
-        double result3 = Library.calculateAverage(array3);
+        double result1 = sut.calculateAverage(array1);
+        double result2 = sut.calculateAverage(array2);
+        double result3 = sut.calculateAverage(array3);
 
         // Assert
         assertEquals(4.0, result1, "Expected average to be 3.0");
         assertEquals(30.0, result2, "Expected average to be 30.0");
         assertEquals(0.0, result3, "Expected average to be 0.0");
+    }
+
+    @Test
+    public void testLowestAverage() {
+        int[][] arrays = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+
+        Library sut = new Library();
+        int[] result = sut.lowestAverage(arrays);
+
+        int[] expected = {1, 2, 3};
+        for (int i = 0; i < expected.length; i++) {
+            assertEquals(expected[i], result[i]);
+        }
     }
 }

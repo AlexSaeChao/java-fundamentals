@@ -40,5 +40,17 @@ public class Library {
 
         return (double) sum / array.length;
     }
+    public int[] lowestAverage(int[][] arrays) {
+        int minIndex = 0;
+        double minAverage = Double.MAX_VALUE;
+        for (int i = 0; i <arrays.length; i++) {
+            double average = calculateAverage(arrays[i]);
+            if (average < minAverage) {
+                minIndex = i;
+                minAverage = average;
+            }
+        }
+        return arrays[minIndex];
+    }
 
 }
