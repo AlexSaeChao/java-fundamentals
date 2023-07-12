@@ -9,6 +9,7 @@
 * diceRoll
 * containsDuplicates
 * calculatingAverages
+* LowestAverage
 
 ## Resources
 
