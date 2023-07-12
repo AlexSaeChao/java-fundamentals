@@ -3,6 +3,7 @@
  */
 package basiclibrary;
 
+import java.util.HashSet;
 import java.util.Random;
 import java.util.Arrays;
 public class Library {
@@ -40,10 +41,11 @@ public class Library {
 
         return (double) sum / array.length;
     }
+
     public int[] lowestAverage(int[][] arrays) {
         int minIndex = 0;
         double minAverage = Double.MAX_VALUE;
-        for (int i = 0; i <arrays.length; i++) {
+        for (int i = 0; i < arrays.length; i++) {
             double average = calculateAverage(arrays[i]);
             if (average < minAverage) {
                 minIndex = i;
@@ -51,6 +53,47 @@ public class Library {
             }
         }
         return arrays[minIndex];
+    }
+
+    public static String analyzeWeatherData(int[][] weeklyMonthTemperatures) {
+        int minTemp = Integer.MAX_VALUE;
+        int maxTemp = Integer.MIN_VALUE;
+        HashSet<Integer> uniTemperatures = new HashSet<>();
+
+        // Iterate through the data to find min and max temperatures
+        for (int[] weekTemperatures : weeklyMonthTemperatures) {
+            for (int temperature : weekTemperatures) {
+                uniTemperatures.add(temperature);
+                minTemp = Math.min(minTemp, temperature);
+                maxTemp = Math.max(maxTemp, temperature);
+            }
+        }
+
+        String missingTemperatures = "";
+
+
+        for (int temperature = minTemp; temperature <= maxTemp; temperature++) {
+            boolean foundTemperature = false;
+            outerLoop:
+            for (int[] weekTemperatures : weeklyMonthTemperatures) {
+                for (int temp : weekTemperatures) {
+                    if (temp == temperature) {
+                        foundTemperature = true;
+                        break outerLoop;
+                    }
+                }
+            }
+            if (!foundTemperature) {
+                missingTemperatures += "Never saw temperature: " + temperature + "\n";
+            }
+        }
+
+        // Construct the result string
+        String result = "High: " + maxTemp + "\n";
+        result += "Low: " + minTemp + "\n";
+        result += missingTemperatures;
+
+        return result;
     }
 
 }
