@@ -10,6 +10,8 @@
 * containsDuplicates
 * calculatingAverages
 * LowestAverage
+* analyzing weather
+* tally
 
 ## Resources
 
