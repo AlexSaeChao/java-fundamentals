@@ -3,6 +3,9 @@
  */
 package basiclibrary;
 import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
+import java.util.List;
+import static basiclibrary.Library.tally;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LibraryTest {
@@ -21,8 +24,7 @@ class LibraryTest {
             assertTrue(roll >= 1 && roll <= Library.numOfSides, "Invalid roll value");
         }
     }
-    @Test
-    void containsDuplicates_ReturnsFalse_test() {
+    @Test void containsDuplicates_ReturnsFalse_test() {
         // Arrange
         Library sut = new Library();
         int[] array = {1, 2, 3, 4, 5};
@@ -34,8 +36,7 @@ class LibraryTest {
         assertFalse(result, "Expected no duplicates");
     }
 
-    @Test
-    void containsDuplicates_ReturnsTrue_test() {
+    @Test void containsDuplicates_ReturnsTrue_test() {
         // Arrange
         Library sut = new Library();
         int[] array = {1, 2, 3, 4, 3, 5};
@@ -47,8 +48,7 @@ class LibraryTest {
         assertTrue(result, "Expected duplicates to exist");
     }
 
-    @Test
-    void calculateAverage_ReturnsCorrectAverage_test() {
+    @Test void calculateAverage_ReturnsCorrectAverage_test() {
         // Arrange
         Library sut = new Library();
         int[] array1 = {6, 2, 3, 4, 5};
@@ -66,8 +66,7 @@ class LibraryTest {
         assertEquals(0.0, result3, "Expected average to be 0.0");
     }
 
-    @Test
-    public void testLowestAverage() {
+    @Test public void testLowestAverage() {
         int[][] arrays = {
                 {1, 2, 3},
                 {4, 5, 6},
@@ -83,8 +82,7 @@ class LibraryTest {
         }
     }
 
-    @Test
-    public void testAnalyzeWeatherData() {
+    @Test public void testAnalyzeWeatherData() {
         // Arrange
         int[][] weeklyMonthTemperatures = {
                 {66, 64, 58, 65, 71, 57, 60},
@@ -107,6 +105,28 @@ class LibraryTest {
                 "Never saw temperature: 69\n";
 
         assertEquals(expected, result);
+    }
+
+
+    @Test
+    public void tally_ReturnsWinnerName_test() {
+        // Arrange
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+
+        // Act
+        String winner = tally(votes);
+
+        // Assert
+        assertEquals("Bush", winner);
     }
 }
 
