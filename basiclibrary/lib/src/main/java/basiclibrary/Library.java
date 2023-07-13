@@ -3,9 +3,8 @@
  */
 package basiclibrary;
 
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Arrays;
+import java.util.*;
+
 public class Library {
 
     public static int numOfSides = 6;
@@ -58,19 +57,18 @@ public class Library {
     public static String analyzeWeatherData(int[][] weeklyMonthTemperatures) {
         int minTemp = Integer.MAX_VALUE;
         int maxTemp = Integer.MIN_VALUE;
-        HashSet<Integer> uniTemperatures = new HashSet<>();
+        HashSet<Integer> uniqTemperatures = new HashSet<>();
 
         // Iterate through the data to find min and max temperatures
         for (int[] weekTemperatures : weeklyMonthTemperatures) {
             for (int temperature : weekTemperatures) {
-                uniTemperatures.add(temperature);
+                uniqTemperatures.add(temperature);
                 minTemp = Math.min(minTemp, temperature);
                 maxTemp = Math.max(maxTemp, temperature);
             }
         }
 
         String missingTemperatures = "";
-
 
         for (int temperature = minTemp; temperature <= maxTemp; temperature++) {
             boolean foundTemperature = false;
@@ -96,4 +94,23 @@ public class Library {
         return result;
     }
 
+    public static String tally(List<String> votes) {
+        Map<String, Integer> voteCount = new HashMap<>();
+
+        for (String vote : votes) {
+            voteCount.put(vote, voteCount.getOrDefault(vote, 0) + 1);
+        }
+        int maxVotes = 0;
+        String winner = "";
+
+        for (String option : voteCount.keySet()) {
+            int count = voteCount.get(option);
+
+            if (count > maxVotes) {
+                maxVotes = count;
+                winner = option;
+            }
+        }
+        return winner;
+    }
 }
