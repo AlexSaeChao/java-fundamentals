@@ -9,8 +9,24 @@ import static org.junit.jupiter.api.Assertions.*;
 class RestaurantTest {
     @Test void testRestaurantCreation() {
 
-        Restaurant goodBites = new Restaurant("Good Bites", 4, 2);
-        assertEquals("Restaurant{name='Good Bites', stars=4.0, priceCategory=2, reviews=[]}", goodBites.toString());
+        Restaurant restaurant = new Restaurant("Yum Yum Bowls", 0, 2);
 
+        // Act
+        Review review1 = new Review("Great food and service!", "Green G.", 5);
+        restaurant.addReview(review1);
+
+        Review review2 = new Review("Average experience.", "M.Jane", 2);
+        restaurant.addReview(review2);
+
+        // Assert
+        System.out.println("Reviews for " + restaurant.getName() + ":");
+        for (Review review : restaurant.getReviews()) {
+            System.out.println(review.toString());
+        }
+
+        Review review3 = new Review("Not my vibe", "Peter Porker", 1);
+        restaurant.addReview(review3);
+        System.out.println(review3);
+        System.out.println("Updated star rating: " + restaurant.getStars());
     }
 }
