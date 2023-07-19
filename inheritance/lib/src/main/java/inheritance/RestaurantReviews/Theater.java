@@ -3,16 +3,24 @@ package inheritance.RestaurantReviews;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Shop extends Establishment {
+public class Theater extends Establishment {
     private int priceCategory;
     private List<Review> reviews;
-    public String description;
+    public List<Movie> movies;
 
-    public Shop(String name, double stars, int priceCategory, String description) {
+    public Theater(String name, double stars, int priceCategory) {
         super(name, stars, priceCategory);
         this.priceCategory = priceCategory;
-        this.description = description;
         this.reviews = new ArrayList<>();
+        this.movies = new ArrayList<>();
+    }
+
+    public void addMovie(Movie movie) {
+        movies.add(movie);
+    }
+
+    public List<Movie> getMovies() {
+        return movies;
     }
 
     public void addReview(Review review) {
@@ -53,8 +61,8 @@ public class Shop extends Establishment {
         return "Shop{" +
                 "name='" + getName() + '\'' +
                 ", stars=" + getStars() +
-                ", description=" + description +
                 ", priceCategory=" + priceCategory +
+                ", movies=" + movies +
                 ", reviews=" + reviews +
                 '}';
     }

@@ -19,6 +19,17 @@ Restaurant-Review Association:
 * A restaurant maintains a list of reviews.
 * The star rating of a restaurant is updated dynamically when a new review is added.
 
+Shop:
+
+* Added Class
+* Reviews also added to Shop
+
+Theater:
+
+* Added Class
+* added movies and added methods to add them
+* Reviews also added to theater
+
 Testing:
 
 * Included test cases to verify the behavior of the Restaurant and Review classes.
@@ -26,4 +37,4 @@ Testing:
 * Verified the correct functioning of the implemented methods and calculations.
 
 ## How to test
-Run the App.main()
+I ran the test by running them in the IDE, I'm not sure how to run those tests when it's in multiple files, under another package as well, at this time
