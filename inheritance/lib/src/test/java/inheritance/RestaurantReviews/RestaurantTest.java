@@ -10,6 +10,7 @@ class RestaurantTest {
     @Test void testRestaurantCreation() {
 
         Restaurant goodBites = new Restaurant("Good Bites", 4, 2);
-        assertEquals("Restaurant{name='Good Bites', stars=4, priceCategory=2}", goodBites.toString());
+        assertEquals("Restaurant{name='Good Bites', stars=4.0, priceCategory=2, reviews=[]}", goodBites.toString());
+
     }
 }

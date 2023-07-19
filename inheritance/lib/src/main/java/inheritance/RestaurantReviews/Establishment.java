@@ -1,16 +1,18 @@
 package inheritance.RestaurantReviews;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class Restaurant extends Establishment {
+public class Establishment {
+    private String name;
+    public double stars;
+
     private int priceCategory;
     private List<Review> reviews;
 
-    public Restaurant(String name, double stars, int priceCategory) {
-        super(name, stars, priceCategory);
+    public Establishment(String name, double stars, int priceCategory) {
+        this.name = name;
+        this.stars = stars;
         this.priceCategory = priceCategory;
-        this.reviews = new ArrayList<>();
     }
 
     public void addReview(Review review) {
@@ -28,29 +30,35 @@ public class Restaurant extends Establishment {
         setStars(reviews.isEmpty() ? 0 : (totalStars / reviews.size()));
     }
 
-    public int getPriceCategory() {
-        return priceCategory;
-    }
-
-    public void setPriceCategory(int priceCategory) {
-        this.priceCategory = priceCategory;
-    }
-
-    @Override
     public List<Review> getReviews() {
         return reviews;
     }
 
-    @Override
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public double getStars() {
+        return stars;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setStars(double stars) {
+        this.stars = stars;
+    }
+
     @Override
     public String toString() {
-        return "Restaurant{" +
-                "name='" + getName() + '\'' +
-                ", stars=" + getStars() +
+        return "Establishment{" +
+                "name='" + name + '\'' +
+                ", stars=" + stars +
                 ", priceCategory=" + priceCategory +
                 ", reviews=" + reviews +
                 '}';
