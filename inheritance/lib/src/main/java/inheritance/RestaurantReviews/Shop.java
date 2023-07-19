@@ -3,13 +3,15 @@ package inheritance.RestaurantReviews;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Restaurant extends Establishment {
+public class Shop extends Establishment {
     private int priceCategory;
     private List<Review> reviews;
+    private String description;
 
-    public Restaurant(String name, double stars, int priceCategory) {
+    public Shop(String name, double stars, int priceCategory, String description) {
         super(name, stars, priceCategory);
         this.priceCategory = priceCategory;
+        this.description = description;
         this.reviews = new ArrayList<>();
     }
 
@@ -51,6 +53,7 @@ public class Restaurant extends Establishment {
         return "Restaurant{" +
                 "name='" + getName() + '\'' +
                 ", stars=" + getStars() +
+                ", description=" + description +
                 ", priceCategory=" + priceCategory +
                 ", reviews=" + reviews +
                 '}';
